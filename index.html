@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Emathequationarray - A jquery equationarray tool</title>
+        <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" media="all" href="style.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="mathquill/mathquill.css" />
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="mathquill/mathquill.js"></script>
+        <script type="text/javascript" src="mqpanel.js"></script>
+        <script type="text/javascript" src="jquery.emathequationarray.js"></script>
+        <script type="text/javascript">
+            jQuery(function(){
+                jQuery('#mathquillpanel').mqpanel();
+                jQuery('#eqnarr1').emathequationarray({
+    "editable": false,
+    "eqnarray": [
+        {
+            "left": "3x+1",
+            "middle": "=",
+            "right": "4x-5",
+            "editmodes": {
+                "left": true,
+                "middle": false,
+                "right": false
+            }
+        },
+        {
+            "left": "3x",
+            "middle": "=",
+            "right": "4x-9",
+            "editmodes": {
+                "left": false,
+                "middle": true,
+                "right": false
+            }
+        },
+        {
+            "left": "-x",
+            "middle": "=",
+            "right": "-9",
+            "editmodes": {
+                "left": false,
+                "middle": false,
+                "right": false
+            }
+        },
+        {
+            "left": "x",
+            "middle": "=",
+            "right": "9",
+            "editmodes": {
+                "left": false,
+                "middle": false,
+                "right": false
+            }
+        }
+    ]
+}
+//{
+//                    "editable":false,
+//                    eqnarray: [
+//                        {left: "3x+1", middle: "=", right: "4x-8"},
+//                        {left: "3x", middle: "=", right: "4x-9"},
+//                        {left: "-x", middle: "=", right: "-9"},
+//                        {left: "x", middle: "=", right: "9"}
+//                    ]
+//                }
+                );
+                jQuery('#eqnarr2').emathequationarray({
+                    "editable":true,
+                    "authormode": false,
+                    eqnarray: [
+                        {left: "3x+1", middle: "=", right: "4x-8"},
+                        {left: "3x", middle: "=", right: "4x-9"},
+                        {left: "-x", middle: "=", right: "-9"},
+                        {left: "x", middle: "=", right: "9"}
+                    ]
+                });
+                jQuery('#eqnarr2').bind('changed', function(event){
+                    var data = jQuery(this).emathequationarray('get');
+                    jQuery('#eqnarr2-data').val(JSON.stringify(data, null, 4));
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div id="head-content">
+                <img id="logo" src="images/emath-logo.png" alt="E-Math" />
+                <h1>EmathEquationarray</h1>
+                <h2>Create equationarrays in web</h2>
+            </div>
+        </header>
+        <a href="https://github.com/e-math/emathequationarray"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+        <div id="mathquillpanel"></div>
+        <article class="content">
+            <p>This jQuery-plugin is used to show a mathematical LaTeX-like equationarrays in both
+            viewmode and editmode.
+            It depends on <a href="http://jquery.com">jQuery</a> and <a href="http://mathquill.com">MathQuill</a>.
+            Optionally <code>mqpanel.js</code> can also be used.</p>
+            <p>Here are couple of examples, how to use <code>jquery.emathequationarray.js</code>.</p>
+            <h2>Non-editable</h2>
+            <p>Using <code>emathequationarray</code> to show existing equation array</p>
+            <p>If needed, for example for exercises, some fields can be defined as editable.</p>
+            <div class="codewrapper">
+<div class="codeexample">
+&lt;div id="eqnarr1"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    jQuery('#eqnarr1').emathequationarray({
+        "editable": false,
+        "eqnarray": [
+            {
+                "left": "3x+1",
+                "middle": "=",
+                "right": "4x-5",
+                "editmodes": {
+                    "left": true,
+                    "middle": false,
+                    "right": false
+                }
+            },
+            {
+                "left": "3x",
+                "middle": "=",
+                "right": "4x-9",
+                "editmodes": {
+                    "left": false,
+                    "middle": true,
+                    "right": false
+                }
+            },
+            {
+                "left": "-x",
+                "middle": "=",
+                "right": "-9",
+                "editmodes": {
+                    "left": false,
+                    "middle": false,
+                    "right": false
+                }
+            },
+            {
+                "left": "x",
+                "middle": "=",
+                "right": "9",
+                "editmodes": {
+                    "left": false,
+                    "middle": false,
+                    "right": false
+                }
+            }
+        ]
+    }
+&lt;/script&gt;
+</div>
+            </div>
+            <div id="eqnarr1"></div>
+            
+            <h2>Editable</h2>
+            <p>Using <code>emathequationarray</code> to edit an equation array</p>
+            <p>In editmode there are couple of keyboard shortcuts:</p>
+            <dl>
+                <dt>ctrl+arrows</dt><dd> Move in fields</dd>
+                <dt>enter</dt><dd> Go to next field. (In the last fields, add a new row and go to next field.)</dd>
+                <dt>ctrl+enter</dt><dd> Add a new empty row after current row.</dd>
+                <dt>shift+enter</dt><dd> Add a copy of current row after current row.</dd>
+                <dt>ctrl+backspace</dt><dd> Remove current row.</dd>
+            </dl>
+            <div class="codewrapper">
+<div class="codeexample">
+&lt;div id="eqnarr2"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    jQuery('#eqnarr2').emathequationarray({
+        "editable":true,
+        "authormode": false,
+        eqnarray: [
+            {left: "3x+1", middle: "=", right: "4x-8"},
+            {left: "3x", middle: "=", right: "4x-9"},
+            {left: "-x", middle: "=", right: "-9"},
+            {left: "x", middle: "=", right: "9"}
+        ]
+    });
+&lt;/script&gt;
+</div>
+            </div>
+            <div id="eqnarr2"></div>
+            
+            <p></p>
+            
+            <div class="data-area">
+                <textarea id="eqnarr2-data" class="datashow"></textarea>
+            </div>
+        </article>
+        <footer>
+            <div id="disclaimerbox">
+                <div id="leftlogo">
+                    <img src="images/CB_logo-200.png" alt="" />
+                </div>
+                <div id="rightlogo">
+                    <img src="images/EU_with_references-300.png" alt="" />
+                </div>
+                <div id="disclaimer">
+                    The contents of the website reflect the authors' views. The Managing Authority of the Central Baltic INTERREG IVA Programme cannot be held liable for the information published by the project partners. 
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
