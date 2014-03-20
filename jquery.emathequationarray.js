@@ -4,7 +4,7 @@
 |''Description:''|Tool for showing math in equationarray-like structure|
 |''Version:''|1.0|
 |''Date:''|September 23, 2013|
-|''License:''|[[GNU Lesser General Public License|http://www.gnu.org/copyleft/lesser.html]]|
+|''License:''|[[GNU Affero General Public License|http://www.gnu.org/licenses/agpl-3.0.html]]|
 |''~CoreVersion:''|2.6.2|
 |''Contact:''|pesasa@iki.fi|
 |''Dependencies ''|[[DataTiddlerPlugin]]|
@@ -25,7 +25,7 @@
  *
  * E-Math -project http://emath.eu
  * Petri Salmela
- * License: LGPL 2.0 or later
+ * License: AGPL 3.0 or later
  *
  */
 
